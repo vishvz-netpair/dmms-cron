@@ -1,8 +1,8 @@
 import { createLogger, format } from "winston";
-import DailyRotateFile from "winston-daily-rotate-file";
+import D from "winston-daily-rotate-file";
 const { json } = format;
 
-const dailyRotateInfo = new DailyRotateFile({
+const daily = new D({
   filename: "data-%DATE%.log",
   datePattern: "DD-MM-YYYY",
   dirname: "logs/",
@@ -13,7 +13,7 @@ const dailyRotateInfo = new DailyRotateFile({
 
 const logger = createLogger({
   format: json(),
-  transports: [dailyRotateInfo],
+  transports: [daily],
 });
 
 export default logger;

@@ -3,12 +3,18 @@ import c from "node-cron";
 import "dotenv/config";
 import cronJob from "./cron-job.js";
 
+/**
+ * Add DMMS_URL, DMMS_API_KEY, DMMS_CRON_EXPRESSION in env.
+ */
+
 const app = e();
 
 const cronOpts = { timezone: "Asia/Kolkata" };
 
+const DMMS_CRON_EXPRESSION = String(process.env.DMMS_CRON_EXPRESSION);
+
 c.schedule(
-  "00 10 * * *",
+  DMMS_CRON_EXPRESSION,
   () => {
     try {
       cronJob();
