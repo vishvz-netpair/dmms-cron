@@ -1,1 +1,1 @@
-export const scheduleGracePeriod = "/crons/schedule-grace-period";
+export const scheduleGracePeriodUrl = "/crons/schedule-grace-period";
