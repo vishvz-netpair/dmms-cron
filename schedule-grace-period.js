@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 import "dotenv/config";
 import logger from "./logger.js";
+import { scheduleGracePeriod } from "./urls.js";
 
 const DMMS_API_KEY = process.env.DMMS_API_KEY;
 const DMMS_URL = process.env.DMMS_URL;
@@ -13,9 +14,9 @@ const config = {
   },
 };
 
-export default async function cronJob() {
+export default async function scheduleGracePeriod() {
   try {
-    const res = await fetch(DMMS_URL + "/crons/test", config);
+    const res = await fetch(DMMS_URL + scheduleGracePeriod, config);
     const { data } = await res.json();
     logger.log("info", data);
   } catch (error) {

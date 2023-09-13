@@ -1,7 +1,7 @@
 import e from "express";
 import c from "node-cron";
 import "dotenv/config";
-import cronJob from "./cron-job.js";
+import scheduleGracePeriod from "./schedule-grace-period.js";
 
 /**
  * Add DMMS_URL, DMMS_API_KEY, DMMS_CRON_EXPRESSION in env.
@@ -17,7 +17,7 @@ c.schedule(
   DMMS_CRON_EXPRESSION,
   () => {
     try {
-      cronJob();
+      scheduleGracePeriod();
     } catch (error) {
       console.log(
         "Error while executing cron on " +
