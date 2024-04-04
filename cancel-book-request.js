@@ -19,7 +19,9 @@ export default async function cancelBookRequest() {
     const res = await fetch(LMS_URL + cancelOnlineBookReqUrl, config);
     const { data } = await res.json();
     // logger.log("info", data);
+    return;
   } catch (error) {
     console.log("Error while executing specific cron in lms", error.message);
+    return;
   }
 }

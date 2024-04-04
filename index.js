@@ -4,6 +4,7 @@ import "dotenv/config";
 import scheduleGracePeriod from "./schedule-grace-period.js";
 import cancelBookRequest from "./cancel-book-request.js";
 import depositReminder from "./deposit-reminder.js";
+import assetIndentDueDate from "./asset-indent-due.js";
 
 /**
  * Add DMMS_URL, DMMS_API_KEY, DMMS_CRON_EXPRESSION in env.
@@ -21,9 +22,10 @@ c.schedule(
   () => {
     try {
       scheduleGracePeriod();
+      assetIndentDueDate();
     } catch (error) {
       console.log(
-        "Error while executing cron on " +
+        "Error while executing dmms cron on " +
           new Date().toISOString() +
           " : " +
           error.message
@@ -40,7 +42,7 @@ c.schedule(
       depositReminder();
     } catch (error) {
       console.log(
-        "Error while executing cron on " +
+        "Error while executing lms cron on " +
           new Date().toISOString() +
           " : " +
           error.message
